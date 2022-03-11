@@ -1,7 +1,7 @@
 const Order = require("../models/order");
 const Product = require("../models/product");
 const { createTransport } = require("nodemailer");
-const twilioClient = require("twilio")("", "");
+/*const twilioClient = require("twilio")("1111111111111111", "1111111111111");*/
 const loggerConsole = require("../utils/loggerSetup");
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncError = require("../middlewares/catchAsyncError");
@@ -67,11 +67,11 @@ exports.newOrder = catchAsyncError(async (req, res, next) => {
 
   // SETTING UP WHATSAPP BODY
 
-  const wspMessage = {
+  /*  const wspMessage = {
     body: "Hey Admin, wake up! We have a new order: " + parsedOrdersWssp,
     from: "",
     to: "",
-  };
+  };*/
 
   // SETTING UP SMS BODY
 
@@ -84,7 +84,7 @@ exports.newOrder = catchAsyncError(async (req, res, next) => {
   // EMAIL TO ADMIN
   await transporter.sendMail(mailOptions);
   // WSP TO ADMIN
-  await twilioClient.messages.create(wspMessage);
+  /*await twilioClient.messages.create(wspMessage);*/
   /* // MSG TO CLIENT
   await twilioClient.messages.create(smsMessage);*/
 
