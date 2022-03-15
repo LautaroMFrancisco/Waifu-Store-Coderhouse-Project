@@ -56,7 +56,7 @@ npm run seeder - to populate the database with mock data
 ```
 
 ```
-npm run prod -  to run the project in production mode.
+npm run prod - to run the project in production mode.
 ```
 
 ```
