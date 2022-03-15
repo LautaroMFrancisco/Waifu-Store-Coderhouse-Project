@@ -52,7 +52,7 @@ npm install -  to install the project.
 ```
 
 ```
-npm run seeder - to populate the database with mockdata
+npm run seeder - to populate the database with mock data
 ```
 
 ```
