@@ -1,7 +1,7 @@
 const Order = require("../models/order");
 const Product = require("../models/product");
 const { createTransport } = require("nodemailer");
-/*const twilioClient = require("twilio")("1111111111111111", "1111111111111");*/
+/*const twilioClient = require("twilio")(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);*/
 const loggerConsole = require("../utils/loggerSetup");
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncError = require("../middlewares/catchAsyncError");
@@ -67,18 +67,18 @@ exports.newOrder = catchAsyncError(async (req, res, next) => {
 
   // SETTING UP WHATSAPP BODY
 
-  /*  const wspMessage = {
+  const wspMessage = {
     body: "Hey Admin, wake up! We have a new order: " + parsedOrdersWssp,
-    from: "",
-    to: "",
-  };*/
+    from: process.env.WHATSAPP_FROM,
+    to: process.env.WHATSAPP_TO,
+  };
 
   // SETTING UP SMS BODY
 
   const smsMessage = {
     body: `Hello ! We have received your order and it's being processed, thanks for shopping with us!  `,
-    from: "whatsapp:+14155238886",
-    to: "whatsapp:+5491131550684",
+    from: process.env.WHATSAPP_FROM,
+    to: process.env.WHATSAPP_TO,
   };
 
   // EMAIL TO ADMIN
